@@ -43,13 +43,20 @@ function swapPhoto() {
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
+// XMLHttpRequest response listener
+function XMLHttpListener() {
+	console.log(mRequest.response);
+}
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
+mRequest.addEventListener("load", XMLHttpListener);
+mRequest.open("GET", "../images.json");
+mRequest.send();
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
 
-// Holds the retrived JSON information
+// Holds the retrieved JSON information
 var mJson;
 
 // URL for the JSON to load by default
@@ -80,9 +87,10 @@ window.addEventListener('load', function() {
 }, false);
 
 function GalleryImage() {
-	"location": "",
-	"description": "",
-	"date": "",
+	this.location;
+	this.description;
+	this.date;
+	this.img;
 
 	//implement me as an object to hold the following data about an image:
 	//1. location where photo was taken
