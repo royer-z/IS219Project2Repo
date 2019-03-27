@@ -43,26 +43,27 @@ function swapPhoto() {
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
+// URL for the JSON to load by default
+// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
+var mUrl = "../images.json";
+
 // XMLHttpRequest response listener
 function XMLHttpListener() {
+	console.log("XMLHttpRequest: Data loaded.");
 	console.log(mRequest.response);
 }
+
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
 mRequest.addEventListener("load", XMLHttpListener);
-mRequest.open("GET", "../images.json");
+mRequest.open("GET", mUrl, false);
 mRequest.send();
+
+// Holds the retrieved JSON information
+var mJson = JSON.parse(mRequest.response);
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
-
-// Holds the retrieved JSON information
-var mJson;
-
-// URL for the JSON to load by default
-// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'insert_url_here_to_image_json';
-
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
 //@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
