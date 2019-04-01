@@ -44,24 +44,13 @@ function GalleryImage(location, description, date, img) {
     this.img = img;
 }
 
-function swapPhoto() {
-	//Add code here to access the #slideShow element.
-	//Access the img element and replace its source
-	//with a new image from your images array which is loaded 
-	//from the JSON string
-	console.log('swap photo');
-}
-
-// Counter for the mImages array
-var mCurrentIndex = 0;
-
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = "../images.json";
+var mUrl = "../images-short.json";
 
 // XMLHttpRequest response listener
 function XMLHttpListener() {
-	console.log("XMLHttpRequest: Data loaded.");
+	console.log("XMLHttpRequest response:");
 	console.log(mRequest.response);
 }
 
@@ -77,9 +66,14 @@ var mJson = JSON.parse(mRequest.response);
 // Array holding GalleryImage objects (see below).
 var mImages = [];
 
+// Counter for the mImages array
+var mCurrentIndex = 0;
+
+// Populates mImages array with GalleryImage objects
 mJson.images.forEach(image => {
     mImages.push(new GalleryImage(image.imgLocation, image.Description, image.date, image.imgPath));
 });
+console.log("Array of GalleryImage objects:");
 console.log(mImages);
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
@@ -89,6 +83,25 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 		galleryImage.img = e.target;
 		mImages.push(galleryImage);
 	}
+}
+
+function swapPhoto() {
+	// If the end of the list of images is detected start from beginning
+	if (mCurrentIndex === mImages.length){
+		mCurrentIndex = 0;
+	}
+	//Add code here to access the #slideShow element.
+	//Access the img element and replace its source
+	//with a new image from your images array which is loaded
+	//from the JSON string
+	console.log('swap photo');
+	$(".thumbnail").attr("src", mImages[mCurrentIndex].img);
+
+	let details = $(".details");
+	details.find(".location").text(mImages[mCurrentIndex].location);
+	details.find(".description").text(mImages[mCurrentIndex].description);
+	details.find(".date").text(mImages[mCurrentIndex].date);
+	mCurrentIndex++;
 }
 
 $(document).ready( function() {
