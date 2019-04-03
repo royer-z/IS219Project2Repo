@@ -46,7 +46,7 @@ function GalleryImage(location, description, date, img) {
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = "../images-short.json";
+var mUrl = "../images.json";
 
 // XMLHttpRequest response listener
 function XMLHttpListener() {
@@ -71,7 +71,7 @@ var mCurrentIndex = 0;
 
 // Populates mImages array with GalleryImage objects
 mJson.images.forEach(image => {
-    mImages.push(new GalleryImage(image.imgLocation, image.Description, image.date, image.imgPath));
+    mImages.push(new GalleryImage(image.imgLocation, image.description, image.date, image.imgPath));
 });
 console.log("Array of GalleryImage objects:");
 console.log(mImages);
@@ -121,7 +121,10 @@ $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
 	$('.details').eq(0).show();
-	
+	$("#nextPhoto").css({
+		position: "relative",
+		left: "86%",
+	});
 });
 
 window.addEventListener('load', function() {
