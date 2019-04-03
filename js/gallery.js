@@ -46,12 +46,12 @@ function GalleryImage(location, description, date, img) {
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = "../images.json";
+var mUrl = "../images-short.json";
 
 // XMLHttpRequest response listener
 function XMLHttpListener() {
-	console.log("XMLHttpRequest response:");
-	console.log(mRequest.response);
+	// console.log("XMLHttpRequest response:");
+	// console.log(mRequest.response);
 }
 
 // XMLHttpRequest variable
@@ -67,13 +67,12 @@ var mJson = JSON.parse(mRequest.response);
 var mImages = [];
 
 // Counter for the mImages array
-var mCurrentIndex = 0;
+let mCurrentIndex = 0;
 
 // Populates mImages array with GalleryImage objects
 mJson.images.forEach(image => {
     mImages.push(new GalleryImage(image.imgLocation, image.description, image.date, image.imgPath));
 });
-console.log("Array of GalleryImage objects:");
 console.log(mImages);
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
@@ -87,13 +86,14 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 
 function swapPhoto() {
 	// If the end of the list of images is detected start from beginning
-	if (mCurrentIndex === mImages.length){
-		mCurrentIndex = 0;
-	}
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded
 	//from the JSON string
+	if (mCurrentIndex === mImages.length){
+		mCurrentIndex = 0;
+	}
+
 	console.log('swap photo');
 	$(".thumbnail").attr("src", mImages[mCurrentIndex].img);
 
@@ -101,8 +101,23 @@ function swapPhoto() {
 	details.find(".location").text(mImages[mCurrentIndex].location);
 	details.find(".description").text(mImages[mCurrentIndex].description);
 	details.find(".date").text(mImages[mCurrentIndex].date);
+
 	mCurrentIndex++;
 }
+
+$("#nextPhoto").on("click", () => {
+	swapPhoto();
+});
+
+$("#prevPhoto").on("click", () => {
+	mCurrentIndex = mCurrentIndex - 2;
+	// If negative index, jump to end of image list
+	if (mCurrentIndex < 0){
+		mCurrentIndex = mImages.length - 1;
+	}
+	swapPhoto();
+});
+
 
 $(".moreIndicator").on("click", () => {
 	if ($(event.currentTarget).hasClass("rot90")){
@@ -121,6 +136,7 @@ $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
 	$('.details').eq(0).show();
+	// This initially positions the next button to the right side of the slide show
 	$("#nextPhoto").css({
 		position: "relative",
 		left: "86%",
