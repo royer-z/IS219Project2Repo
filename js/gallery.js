@@ -104,7 +104,16 @@ function swapPhoto() {
 	mCurrentIndex++;
 }
 
-
+$(".moreIndicator").on("click", () => {
+	if ($(event.currentTarget).hasClass("rot90")){
+		$(event.currentTarget).addClass("rot270");
+		$(event.currentTarget).removeClass("rot90");
+	}
+	else{
+		$(event.currentTarget).addClass("rot90");
+		$(event.currentTarget).removeClass("rot270");
+	}
+});
 
 $(document).ready( function() {
 	
