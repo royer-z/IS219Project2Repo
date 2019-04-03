@@ -105,10 +105,12 @@ function swapPhoto() {
 	mCurrentIndex++;
 }
 
+// Next photo event listener
 $("#nextPhoto").on("click", () => {
 	swapPhoto();
 });
 
+// Previous photo event listener
 $("#prevPhoto").on("click", () => {
 	mCurrentIndex = mCurrentIndex - 2;
 	// If negative index, jump to end of image list
@@ -118,7 +120,7 @@ $("#prevPhoto").on("click", () => {
 	swapPhoto();
 });
 
-
+// More info event listener
 $(".moreIndicator").on("click", () => {
 	if ($(event.currentTarget).hasClass("rot90")){
 	    $(".details").slideToggle();
