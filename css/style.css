@@ -30,14 +30,15 @@ body {
 	position: absolute;
 	z-index: 3;
 	opacity: .8;
-	top: 21em;
-	left: 18em;
+	top: 80%;
+	left: 45%;
 	transition: all 1s;
 }
 
 .thumbnail {
 	position: relative;
 	box-shadow: 1px 3px 20px 0px;
+	width: 100%;
 }
 
 
