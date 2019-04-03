@@ -1,0 +1,34 @@
+{
+  "images": [
+    {
+      "imgPath": "https://www.iliketowastemytime.com/sites/default/files/burj_khalifa_aka_burj_dubai-wide.jpg",
+      "imgLocation": "United Arab Emirates",
+      "description": "Burj Khalifa",
+      "date": "2010"
+    },
+    {
+      "imgPath": "https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2017/03/Shanghai_for_free-abe6e2eb510b.jpg",
+      "imgLocation": "China",
+      "description": "Shanghai Tower",
+      "date": "2015"
+    },
+    {
+      "imgPath": "https://dq5r178u4t83b.cloudfront.net/wp-content/uploads/sites/55/2018/08/02133642/Makkah-View-Clock-Tower.jpg",
+      "imgLocation": "Saudi Arabia",
+      "description": "Makkah Royal Clock Tower",
+      "date": "2012"
+    },
+    {
+      "imgPath": "https://d1embwjxo27ph2.cloudfront.net/actions/nmcImages/image/generateImage?v=4&height=867&width=1600&path=%2Fping-an-1.jpg",
+      "imgLocation": "China",
+      "description": " Ping An Finance Center",
+      "date": "2017"
+    },
+    {
+      "imgPath": "https://d1embwjxo27ph2.cloudfront.net/actions/nmcImages/image/generateImage?v=4&height=867&width=1600&path=%2Flotte-hero-sunset.jpg",
+      "imgLocation": "South Korea",
+      "description": "Lotte World Tower",
+      "date": "2017"
+    }
+  ]
+}

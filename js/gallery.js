@@ -46,7 +46,7 @@ function GalleryImage(location, description, date, img) {
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = "../images-short.json";
+var mUrl = "../extra.json";
 
 // XMLHttpRequest response listener
 function XMLHttpListener() {
@@ -98,9 +98,9 @@ function swapPhoto() {
 	$(".thumbnail").attr("src", mImages[mCurrentIndex].img);
 
 	let details = $(".details");
-	details.find(".location").text(mImages[mCurrentIndex].location);
-	details.find(".description").text(mImages[mCurrentIndex].description);
-	details.find(".date").text(mImages[mCurrentIndex].date);
+	details.find(".location").text("Location: "+mImages[mCurrentIndex].location);
+	details.find(".description").text("Description: "+mImages[mCurrentIndex].description);
+	details.find(".date").text("Date: "+mImages[mCurrentIndex].date);
 
 	mCurrentIndex++;
 }
