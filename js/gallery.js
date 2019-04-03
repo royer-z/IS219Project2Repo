@@ -104,6 +104,8 @@ function swapPhoto() {
 	mCurrentIndex++;
 }
 
+
+
 $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
