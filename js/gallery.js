@@ -106,19 +106,21 @@ function swapPhoto() {
 
 $(".moreIndicator").on("click", () => {
 	if ($(event.currentTarget).hasClass("rot90")){
+	    $(".details").slideToggle();
 		$(event.currentTarget).addClass("rot270");
 		$(event.currentTarget).removeClass("rot90");
 	}
 	else{
 		$(event.currentTarget).addClass("rot90");
 		$(event.currentTarget).removeClass("rot270");
+		$(".details").slideToggle();
 	}
 });
 
 $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
-	$('.details').eq(0).hide();
+	$('.details').eq(0).show();
 	
 });
 
