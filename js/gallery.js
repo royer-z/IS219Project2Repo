@@ -44,9 +44,32 @@ function GalleryImage(location, description, date, img) {
     this.img = img;
 }
 
+// Returns any parameter included in the page url
+
+function getQueryParams(qs){
+	qs = qs.split("+").join(" ");
+	var params = {},
+		tokens,
+		re = /[?&]?([^=]+)=([^&]*)/g;
+	while (tokens = re.exec(qs)){
+		params[decodeURIComponent(tokens[1])]
+			= decodeURIComponent(tokens[2]);
+	}
+	return params;
+}
+var $_GET = getQueryParams(document.location.search);
+console.log($_GET["json"]);
+
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = "../images.json";
+var mUrl;
+
+if ($_GET["json"] === undefined){
+	mUrl = "../images.json";
+}
+else{
+	mUrl = $_GET["json"];
+}
 
 // XMLHttpRequest response listener
 function XMLHttpListener() {
